@@ -266,13 +266,14 @@ func FullJitterBackoffDelay(n uint, err error, config DelayContext) time.Duratio
 //
 // log each retry example:
 //
-//	retry.New().Do(
-//		func() error {
-//			return errors.New("some error")
-//		},
+//	retry.New(
 //		retry.OnRetry(func(n uint, err error) {
 //			log.Printf("#%d: %s\n", n, err)
 //		}),
+//	).Do(
+//		func() error {
+//			return errors.New("some error")
+//		},
 //	)
 func OnRetry(onRetry OnRetryFunc) Option {
 	if onRetry == nil {
@@ -288,16 +289,17 @@ func OnRetry(onRetry OnRetryFunc) Option {
 //
 // skip retry if special error example:
 //
-//	retry.New().Do(
-//		func() error {
-//			return errors.New("special error")
-//		},
+//	retry.New(
 //		retry.RetryIf(func(err error) bool {
 //			if err.Error() == "special error" {
 //				return false
 //			}
 //			return true
-//		})
+//		}),
+//	).Do(
+//		func() error {
+//			return errors.New("special error")
+//		},
 //	)
 //
 // By default RetryIf stops execution if the error is wrapped using `retry.Unrecoverable`,
@@ -306,7 +308,7 @@ func OnRetry(onRetry OnRetryFunc) Option {
 //	retry.New().Do(
 //		func() error {
 //			return retry.Unrecoverable(errors.New("special error"))
-//		}
+//		},
 //	)
 func RetryIf(retryIf RetryIfFunc) Option {
 	if retryIf == nil {
@@ -325,11 +327,12 @@ func RetryIf(retryIf RetryIfFunc) Option {
 //	ctx, cancel := context.WithCancel(context.Background())
 //	cancel()
 //
-//	retry.New().Do(
+//	retry.New(
+//		retry.Context(ctx),
+//	).Do(
 //		func() error {
 //			...
 //		},
-//		retry.Context(ctx),
 //	)
 func Context(ctx context.Context) Option {
 	return func(r *retrierCore) {
@@ -350,9 +353,10 @@ func Context(ctx context.Context) Option {
 //	    return time.After(d)
 //	}
 //
-//	retry.New().Do(
+//	retry.New(
+//	    retry.WithTimer(&MyTimer{}),
+//	).Do(
 //	    func() error { ... },
-//		   retry.WithTimer(&MyTimer{})
 //	)
 func WithTimer(t Timer) Option {
 	return func(r *retrierCore) {
@@ -369,13 +373,14 @@ func WithTimer(t Timer) Option {
 //	ctx, cancel := context.WithCancel(context.Background())
 //	defer cancel()
 //
-//	retry.New().Do(
-//		func() error {
-//			...
-//		},
+//	retry.New(
 //		retry.Context(ctx),
 //		retry.Attempts(0),
 //		retry.WrapContextErrorWithLastError(true),
+//	).Do(
+//		func() error {
+//			...
+//		},
 //	)
 func WrapContextErrorWithLastError(wrapContextErrorWithLastError bool) Option {
 	return func(r *retrierCore) {
