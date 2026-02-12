@@ -375,11 +375,12 @@ describes behavior enough; I hope)
     ctx, cancel := context.WithCancel(context.Background())
     cancel()
 
-    retry.New().Do(
+    retry.New(
+    	retry.Context(ctx),
+    ).Do(
     	func() error {
     		...
     	},
-    	retry.Context(ctx),
     )
 
 #### func  Delay
@@ -428,13 +429,14 @@ OnRetry function callback are called each retry
 
 log each retry example:
 
-    retry.New().Do(
-    	func() error {
-    		return errors.New("some error")
-    	},
+    retry.New(
     	retry.OnRetry(func(n uint, err error) {
     		log.Printf("#%d: %s\n", n, err)
     	}),
+    ).Do(
+    	func() error {
+    		return errors.New("some error")
+    	},
     )
 
 #### func  RetryIf
@@ -447,16 +449,17 @@ there are any retry attempts remaining)
 
 skip retry if special error example:
 
-    retry.New().Do(
-    	func() error {
-    		return errors.New("special error")
-    	},
+    retry.New(
     	retry.RetryIf(func(err error) bool {
     		if err.Error() == "special error" {
     			return false
     		}
     		return true
-    	})
+    	}),
+    ).Do(
+    	func() error {
+    		return errors.New("special error")
+    	},
     )
 
 By default RetryIf stops execution if the error is wrapped using
@@ -465,7 +468,7 @@ By default RetryIf stops execution if the error is wrapped using
     retry.New().Do(
     	func() error {
     		return retry.Unrecoverable(errors.New("special error"))
-    	}
+    	},
     )
 
 #### func  UntilSucceeded
@@ -494,9 +497,10 @@ example of augmenting time.After with a print statement
         return time.After(d)
     }
 
-    retry.New().Do(
+    retry.New(
+        retry.WithTimer(&MyTimer{}),
+    ).Do(
         func() error { ... },
-    	   retry.WithTimer(&MyTimer{})
     )
 
 #### func  WrapContextErrorWithLastError
@@ -514,13 +518,14 @@ default is false
     ctx, cancel := context.WithCancel(context.Background())
     defer cancel()
 
-    retry.New().Do(
-    	func() error {
-    		...
-    	},
+    retry.New(
     	retry.Context(ctx),
     	retry.Attempts(0),
     	retry.WrapContextErrorWithLastError(true),
+    ).Do(
+    	func() error {
+    		...
+    	},
     )
 
 #### type Retrier
