@@ -44,3 +44,8 @@ func TestRetryEscapedPolicyOptions(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetryEscapedPolicyOptionsRegression(t *testing.T) {
+	TestRetryEscapedPolicyOptions(t)
+	TestRetryEscapedPolicyOptions(t)
+}
