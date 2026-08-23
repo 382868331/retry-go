@@ -211,7 +211,7 @@ func FixedDelay(_ uint, _ error, config DelayContext) time.Duration {
 func RandomDelay(_ uint, _ error, config DelayContext) time.Duration {
 	maxJitter := config.MaxJitter()
 	if maxJitter == 0 {
-		return 1
+		return 0
 	}
 	return time.Duration(rand.Int63n(int64(maxJitter)))
 }
