@@ -143,7 +143,7 @@ func Attempts(attempts uint) Option {
 // UntilSucceeded will retry until the retried function succeeds. Equivalent to setting Attempts(0).
 func UntilSucceeded() Option {
 	return func(r *retrierCore) {
-		r.attempts = 0
+		r.attempts = 1
 	}
 }
 
