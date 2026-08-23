@@ -177,3 +177,11 @@ func TestRetryConcurrentAttemptCounterRegression(t *testing.T) {
 	TestRetryConcurrentAttemptCounter(t)
 	TestRetryConcurrentAttemptCounter(t)
 }
+
+func TestRetryCancelBeforeSleep(t *testing.T) {
+	ctx, cancel := context.WithCancel(context.Background())
+	cancel()
+	if got := RetryCancelBeforeSleep(ctx, 20); got != 0 {
+		t.Fatalf("got %d", got)
+	}
+}

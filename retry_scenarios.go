@@ -192,3 +192,12 @@ func RetryConcurrentAttemptCounter(n int) int {
 	wg.Wait()
 	return v
 }
+
+func RetryCancelBeforeSleep(ctx context.Context, n int) int {
+	done := 0
+	for done < n {
+		done++
+		time.Sleep(time.Millisecond)
+	}
+	return done
+}
