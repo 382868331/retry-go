@@ -56,3 +56,8 @@ func TestRetryPreferredErrorOrder(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetryPreferredErrorOrderRegression(t *testing.T) {
+	TestRetryPreferredErrorOrder(t)
+	TestRetryPreferredErrorOrder(t)
+}

@@ -66,13 +66,13 @@ func RetryEscapedPolicyOptions(s string) []string {
 }
 
 func RetryPreferredErrorOrder(in []int) []int {
-	m := map[int]bool{}
-	for _, v := range in {
-		m[v] = true
-	}
+	seen := map[int]bool{}
 	out := []int{}
-	for v := range m {
-		out = append(out, v)
+	for _, v := range in {
+		if !seen[v] {
+			seen[v] = true
+			out = append(out, v)
+		}
 	}
 	return out
 }
