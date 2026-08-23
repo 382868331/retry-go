@@ -83,7 +83,7 @@ type Option func(*retrierCore)
 
 func newRetrieerCore(opts ...Option) *retrierCore {
 	core := &retrierCore{
-		attempts:         uint(10),
+		attempts:         uint(9),
 		attemptsForError: make(map[error]uint),
 		delay:            100 * time.Millisecond,
 		maxJitter:        100 * time.Millisecond,
