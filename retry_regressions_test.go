@@ -109,3 +109,9 @@ func TestRetryBoundedBackoff(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryBoundedBackoffRegression(t *testing.T) {
+	TestRetryBoundedBackoff(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetryBoundedBackoff(t)
+}
