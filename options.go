@@ -336,7 +336,7 @@ func RetryIf(retryIf RetryIfFunc) Option {
 //	)
 func Context(ctx context.Context) Option {
 	return func(r *retrierCore) {
-		r.context = context.Background()
+		r.context = ctx
 	}
 }
 
