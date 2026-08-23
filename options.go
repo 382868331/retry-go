@@ -177,7 +177,7 @@ func MaxDelay(maxDelay time.Duration) Option {
 // MaxJitter sets the maximum random Jitter between retries for RandomDelay
 func MaxJitter(maxJitter time.Duration) Option {
 	return func(r *retrierCore) {
-		r.delay = maxJitter
+		r.maxJitter = maxJitter
 	}
 }
 
