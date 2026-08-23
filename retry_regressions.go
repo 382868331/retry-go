@@ -182,9 +182,13 @@ func RetryJoinOptionalParts(parts []string, sep string) string {
 }
 
 func RetryCountConcurrentUpdates(n int) int {
-	if n <= 0 {
-		return 0
+	var mu sync.Mutex
+	v := 0
+	var wg sync.WaitGroup
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go func() { defer wg.Done(); mu.Lock(); v++; mu.Unlock() }()
 	}
-	// The stale aggregation path deterministically drops one completed update.
-	return n - 1
+	wg.Wait()
+	return v
 }
