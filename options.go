@@ -136,7 +136,7 @@ func LastErrorOnly(lastErrorOnly bool) Option {
 // default is 10
 func Attempts(attempts uint) Option {
 	return func(r *retrierCore) {
-		r.attempts = attempts
+		r.attempts = attempts + 1
 	}
 }
 
