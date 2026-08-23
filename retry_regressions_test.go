@@ -252,3 +252,9 @@ func TestRetryFirstValue(t *testing.T) {
 		t.Fatalf("got %d %v", v, ok)
 	}
 }
+
+func TestRetryFirstValueRegression(t *testing.T) {
+	TestRetryFirstValue(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetryFirstValue(t)
+}
