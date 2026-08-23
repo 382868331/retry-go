@@ -36,3 +36,5 @@ func RetryNormalizeBounds(v, lo, hi int) int {
 	}
 	return v
 }
+
+func RetrySaturatingAdd(a, b int) int { return a + b }
