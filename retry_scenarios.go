@@ -182,11 +182,12 @@ func RetryEmptyErrorJoin(parts []string, sep string) string {
 }
 
 func RetryConcurrentAttemptCounter(n int) int {
+	var mu sync.Mutex
 	v := 0
 	var wg sync.WaitGroup
 	for i := 0; i < n; i++ {
 		wg.Add(1)
-		go func() { defer wg.Done(); old := v; runtime.Gosched(); v = old + 1 }()
+		go func() { defer wg.Done(); mu.Lock(); v++; mu.Unlock() }()
 	}
 	wg.Wait()
 	return v

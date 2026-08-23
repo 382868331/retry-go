@@ -172,3 +172,8 @@ func TestRetryConcurrentAttemptCounter(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryConcurrentAttemptCounterRegression(t *testing.T) {
+	TestRetryConcurrentAttemptCounter(t)
+	TestRetryConcurrentAttemptCounter(t)
+}
