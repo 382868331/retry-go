@@ -205,3 +205,10 @@ func TestRetryProcessUntilCanceledRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryProcessUntilCanceled(t)
 }
+
+func TestRetryWrapCause(t *testing.T) {
+	base := errors.New("root")
+	if got := RetryWrapCause(base); !errors.Is(got, base) {
+		t.Fatalf("chain lost: %v", got)
+	}
+}

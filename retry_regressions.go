@@ -206,3 +206,5 @@ func RetryProcessUntilCanceled(ctx context.Context, n int) int {
 	}
 	return done
 }
+
+func RetryWrapCause(baseErr error) error { return fmt.Errorf("operation failed: %v", baseErr) }
