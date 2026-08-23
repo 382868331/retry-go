@@ -238,3 +238,5 @@ func RetryFirstValue(v []int) (int, bool) {
 	}
 	return v[0], true
 }
+
+func RetrySplitPlatformLines(s string) []string { return strings.Split(s, "\n") }
