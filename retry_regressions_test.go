@@ -103,3 +103,9 @@ func TestRetryParseBooleanOptionRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryParseBooleanOption(t)
 }
+
+func TestRetryBoundedBackoff(t *testing.T) {
+	if got := RetryBoundedBackoff(2, 100, 4); got != 32 {
+		t.Fatalf("got %d", got)
+	}
+}
