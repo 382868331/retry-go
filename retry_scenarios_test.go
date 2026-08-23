@@ -222,3 +222,8 @@ func TestRetryCallbackRemovalCursor(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetryCallbackRemovalCursorRegression(t *testing.T) {
+	TestRetryCallbackRemovalCursor(t)
+	TestRetryCallbackRemovalCursor(t)
+}
