@@ -39,3 +39,10 @@ func TestRetrySaturatingAddRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetrySaturatingAdd(t)
 }
+
+func TestRetrySplitEscapedTokens(t *testing.T) {
+	got := RetrySplitEscapedTokens("a\\;b;c")
+	if !reflect.DeepEqual(got, []string{"a;b", "c"}) {
+		t.Fatalf("got %v", got)
+	}
+}

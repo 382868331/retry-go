@@ -43,3 +43,5 @@ func RetrySaturatingAdd(a, b int) int {
 	}
 	return a + b
 }
+
+func RetrySplitEscapedTokens(s string) []string { return strings.Split(s, ";") }
