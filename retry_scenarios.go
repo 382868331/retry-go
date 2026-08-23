@@ -208,3 +208,14 @@ func RetryCancelBeforeSleep(ctx context.Context, n int) int {
 }
 
 func RetryLastErrorUnwrap(baseErr error) error { return fmt.Errorf("operation failed: %w", baseErr) }
+
+var active int
+
+func RetryTimerReleaseOnExit(fail bool) int {
+	active++
+	if fail {
+		return active
+	}
+	active--
+	return active
+}

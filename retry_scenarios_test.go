@@ -202,3 +202,11 @@ func TestRetryLastErrorUnwrapRegression(t *testing.T) {
 	TestRetryLastErrorUnwrap(t)
 	TestRetryLastErrorUnwrap(t)
 }
+
+func TestRetryTimerReleaseOnExit(t *testing.T) {
+	active = 0
+	RetryTimerReleaseOnExit(true)
+	if active != 0 {
+		t.Fatalf("active=%d", active)
+	}
+}
