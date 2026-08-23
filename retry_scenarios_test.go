@@ -107,3 +107,9 @@ func TestRetryExponentialShiftCapRegression(t *testing.T) {
 	TestRetryExponentialShiftCap(t)
 	TestRetryExponentialShiftCap(t)
 }
+
+func TestRetryJitterUpperEndpoint(t *testing.T) {
+	if got := RetryJitterUpperEndpoint([]int{1, 2, 3}, 1); got != 3 {
+		t.Fatalf("got %d", got)
+	}
+}
