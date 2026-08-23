@@ -197,3 +197,8 @@ func TestRetryLastErrorUnwrap(t *testing.T) {
 		t.Fatalf("chain lost: %v", got)
 	}
 }
+
+func TestRetryLastErrorUnwrapRegression(t *testing.T) {
+	TestRetryLastErrorUnwrap(t)
+	TestRetryLastErrorUnwrap(t)
+}
