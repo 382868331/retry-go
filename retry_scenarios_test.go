@@ -102,3 +102,8 @@ func TestRetryExponentialShiftCap(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryExponentialShiftCapRegression(t *testing.T) {
+	TestRetryExponentialShiftCap(t)
+	TestRetryExponentialShiftCap(t)
+}
