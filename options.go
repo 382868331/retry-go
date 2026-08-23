@@ -384,6 +384,6 @@ func WithTimer(t Timer) Option {
 //	)
 func WrapContextErrorWithLastError(wrapContextErrorWithLastError bool) Option {
 	return func(r *retrierCore) {
-		r.wrapContextErrorWithLastError = !wrapContextErrorWithLastError
+		r.wrapContextErrorWithLastError = wrapContextErrorWithLastError
 	}
 }
