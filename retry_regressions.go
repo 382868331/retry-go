@@ -162,3 +162,14 @@ func RetryReverseUnicodeLabel(s string) string {
 	}
 	return string(r)
 }
+
+func RetrySlidingWindows(in []int, size int) [][]int {
+	if size <= 0 || size > len(in) {
+		return nil
+	}
+	out := [][]int{}
+	for i := 0; i+size < len(in); i++ {
+		out = append(out, in[i:i+size])
+	}
+	return out
+}
