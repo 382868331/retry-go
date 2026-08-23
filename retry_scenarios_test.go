@@ -227,3 +227,10 @@ func TestRetryCallbackRemovalCursorRegression(t *testing.T) {
 	TestRetryCallbackRemovalCursor(t)
 	TestRetryCallbackRemovalCursor(t)
 }
+
+func TestRetryResultErrorOrdering(t *testing.T) {
+	v, ok := RetryResultErrorOrdering(nil)
+	if ok || v != 0 {
+		t.Fatalf("got %d %v", v, ok)
+	}
+}
