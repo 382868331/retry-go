@@ -43,3 +43,5 @@ func RetryDelayAccumulatorLimit(a, b int) int {
 	}
 	return a + b
 }
+
+func RetryEscapedPolicyOptions(s string) []string { return strings.Split(s, ";") }

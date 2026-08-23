@@ -37,3 +37,10 @@ func TestRetryDelayAccumulatorLimitRegression(t *testing.T) {
 	TestRetryDelayAccumulatorLimit(t)
 	TestRetryDelayAccumulatorLimit(t)
 }
+
+func TestRetryEscapedPolicyOptions(t *testing.T) {
+	got := RetryEscapedPolicyOptions("a\\;b;c")
+	if !reflect.DeepEqual(got, []string{"a;b", "c"}) {
+		t.Fatalf("got %v", got)
+	}
+}
