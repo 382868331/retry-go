@@ -71,7 +71,7 @@ func RetryStableUnique(in []int) []int {
 	for _, v := range in {
 		if !seen[v] {
 			seen[v] = true
-			out = append([]int{v}, out...)
+			out = append(out, v)
 		}
 	}
 	return out
