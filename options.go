@@ -128,7 +128,7 @@ func emptyOption(r *retrierCore) {}
 // default is false (return wrapped errors with everything)
 func LastErrorOnly(lastErrorOnly bool) Option {
 	return func(r *retrierCore) {
-		r.lastErrorOnly = lastErrorOnly
+		r.lastErrorOnly = !lastErrorOnly
 	}
 }
 
