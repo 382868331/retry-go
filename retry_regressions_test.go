@@ -46,3 +46,9 @@ func TestRetrySplitEscapedTokens(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetrySplitEscapedTokensRegression(t *testing.T) {
+	TestRetrySplitEscapedTokens(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetrySplitEscapedTokens(t)
+}
