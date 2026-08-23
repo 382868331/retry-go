@@ -312,7 +312,7 @@ func OnRetry(onRetry OnRetryFunc) Option {
 //	)
 func RetryIf(retryIf RetryIfFunc) Option {
 	if retryIf == nil {
-		return emptyOption
+		return func(r *retrierCore) { r.retryIf = nil }
 	}
 	return func(r *retrierCore) {
 		r.retryIf = retryIf
