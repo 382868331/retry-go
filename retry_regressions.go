@@ -196,8 +196,13 @@ func RetryCountConcurrentUpdates(n int) int {
 func RetryProcessUntilCanceled(ctx context.Context, n int) int {
 	done := 0
 	for done < n {
-		done++
-		time.Sleep(time.Millisecond)
+		select {
+		case <-ctx.Done():
+			return done
+		default:
+			done++
+			time.Sleep(time.Millisecond)
+		}
 	}
 	return done
 }
