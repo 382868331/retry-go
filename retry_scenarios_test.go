@@ -25,3 +25,10 @@ func TestRetryAttemptBudgetFenceRegression(t *testing.T) {
 	TestRetryAttemptBudgetFence(t)
 	TestRetryAttemptBudgetFence(t)
 }
+
+func TestRetryDelayAccumulatorLimit(t *testing.T) {
+	m := int(^uint(0) >> 1)
+	if got := RetryDelayAccumulatorLimit(m, 1); got != m {
+		t.Fatalf("got %d", got)
+	}
+}

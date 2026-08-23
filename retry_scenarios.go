@@ -36,3 +36,5 @@ func RetryAttemptBudgetFence(v, lo, hi int) int {
 	}
 	return v
 }
+
+func RetryDelayAccumulatorLimit(a, b int) int { return a + b }
