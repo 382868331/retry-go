@@ -185,3 +185,8 @@ func TestRetryCancelBeforeSleep(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryCancelBeforeSleepRegression(t *testing.T) {
+	TestRetryCancelBeforeSleep(t)
+	TestRetryCancelBeforeSleep(t)
+}

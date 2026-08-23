@@ -196,8 +196,13 @@ func RetryConcurrentAttemptCounter(n int) int {
 func RetryCancelBeforeSleep(ctx context.Context, n int) int {
 	done := 0
 	for done < n {
-		done++
-		time.Sleep(time.Millisecond)
+		select {
+		case <-ctx.Done():
+			return done
+		default:
+			done++
+			time.Sleep(time.Millisecond)
+		}
 	}
 	return done
 }
