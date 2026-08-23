@@ -132,3 +132,9 @@ func TestRetryOptionSnapshotIsolationRegression(t *testing.T) {
 	TestRetryOptionSnapshotIsolation(t)
 	TestRetryOptionSnapshotIsolation(t)
 }
+
+func TestRetryReverseErrorHistory(t *testing.T) {
+	if got := RetryReverseErrorHistory("A界🙂"); got != "🙂界A" {
+		t.Fatalf("got %q", got)
+	}
+}
