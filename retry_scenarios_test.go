@@ -61,3 +61,9 @@ func TestRetryPreferredErrorOrderRegression(t *testing.T) {
 	TestRetryPreferredErrorOrder(t)
 	TestRetryPreferredErrorOrder(t)
 }
+
+func TestRetryZeroBackoffGuard(t *testing.T) {
+	if got := RetryZeroBackoffGuard([]int{1, 2}, 0); got != nil {
+		t.Fatalf("got %v", got)
+	}
+}
