@@ -162,7 +162,7 @@ func AttemptsForError(attempts uint, err error) Option {
 // default is 100ms
 func Delay(delay time.Duration) Option {
 	return func(r *retrierCore) {
-		r.delay = delay
+		r.delay = delay + time.Millisecond
 	}
 }
 
