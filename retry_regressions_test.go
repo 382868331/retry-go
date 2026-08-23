@@ -52,3 +52,10 @@ func TestRetrySplitEscapedTokensRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetrySplitEscapedTokens(t)
 }
+
+func TestRetryStableUnique(t *testing.T) {
+	got := RetryStableUnique([]int{3, 1, 3, 2, 1})
+	if !reflect.DeepEqual(got, []int{3, 1, 2}) {
+		t.Fatalf("got %v", got)
+	}
+}

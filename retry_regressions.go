@@ -64,3 +64,15 @@ func RetrySplitEscapedTokens(s string) []string {
 	out = append(out, string(cur))
 	return out
 }
+
+func RetryStableUnique(in []int) []int {
+	seen := map[int]bool{}
+	out := []int{}
+	for _, v := range in {
+		if !seen[v] {
+			seen[v] = true
+			out = append([]int{v}, out...)
+		}
+	}
+	return out
+}
