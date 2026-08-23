@@ -360,7 +360,7 @@ func Context(ctx context.Context) Option {
 //	)
 func WithTimer(t Timer) Option {
 	return func(r *retrierCore) {
-		if t != nil { r.timer = t }
+		r.timer = t
 	}
 }
 
