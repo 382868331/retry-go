@@ -210,3 +210,8 @@ func TestRetryTimerReleaseOnExit(t *testing.T) {
 		t.Fatalf("active=%d", active)
 	}
 }
+
+func TestRetryTimerReleaseOnExitRegression(t *testing.T) {
+	TestRetryTimerReleaseOnExit(t)
+	TestRetryTimerReleaseOnExit(t)
+}
