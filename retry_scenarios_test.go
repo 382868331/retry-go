@@ -49,3 +49,10 @@ func TestRetryEscapedPolicyOptionsRegression(t *testing.T) {
 	TestRetryEscapedPolicyOptions(t)
 	TestRetryEscapedPolicyOptions(t)
 }
+
+func TestRetryPreferredErrorOrder(t *testing.T) {
+	got := RetryPreferredErrorOrder([]int{3, 1, 3, 2, 1})
+	if !reflect.DeepEqual(got, []int{3, 1, 2}) {
+		t.Fatalf("got %v", got)
+	}
+}

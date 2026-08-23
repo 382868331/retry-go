@@ -64,3 +64,15 @@ func RetryEscapedPolicyOptions(s string) []string {
 	out = append(out, string(cur))
 	return out
 }
+
+func RetryPreferredErrorOrder(in []int) []int {
+	m := map[int]bool{}
+	for _, v := range in {
+		m[v] = true
+	}
+	out := []int{}
+	for v := range m {
+		out = append(out, v)
+	}
+	return out
+}
