@@ -150,3 +150,8 @@ func TestRetryRetryWindowTail(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetryRetryWindowTailRegression(t *testing.T) {
+	TestRetryRetryWindowTail(t)
+	TestRetryRetryWindowTail(t)
+}
