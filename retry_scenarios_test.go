@@ -72,3 +72,10 @@ func TestRetryZeroBackoffGuardRegression(t *testing.T) {
 	TestRetryZeroBackoffGuard(t)
 	TestRetryZeroBackoffGuard(t)
 }
+
+func TestRetryUnicodeOperationLabel(t *testing.T) {
+	got := RetryUnicodeOperationLabel("A界B", 2)
+	if got != "A界" || !utf8.ValidString(got) {
+		t.Fatalf("got %q", got)
+	}
+}

@@ -92,3 +92,13 @@ func RetryZeroBackoffGuard(in []int, size int) [][]int {
 	}
 	return out
 }
+
+func RetryUnicodeOperationLabel(s string, n int) string {
+	if n < 0 {
+		return ""
+	}
+	if n >= len(s) {
+		return s
+	}
+	return s[:n]
+}
