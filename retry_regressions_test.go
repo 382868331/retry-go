@@ -142,3 +142,9 @@ func TestRetryCloneNestedStateRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryCloneNestedState(t)
 }
+
+func TestRetryReverseUnicodeLabel(t *testing.T) {
+	if got := RetryReverseUnicodeLabel("A界🙂"); got != "🙂界A" {
+		t.Fatalf("got %q", got)
+	}
+}
