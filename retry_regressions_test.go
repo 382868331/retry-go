@@ -115,3 +115,9 @@ func TestRetryBoundedBackoffRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryBoundedBackoff(t)
 }
+
+func TestRetrySelectUpperQuantile(t *testing.T) {
+	if got := RetrySelectUpperQuantile([]int{1, 2, 3}, 1); got != 3 {
+		t.Fatalf("got %d", got)
+	}
+}
