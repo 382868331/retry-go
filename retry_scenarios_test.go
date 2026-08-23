@@ -113,3 +113,8 @@ func TestRetryJitterUpperEndpoint(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryJitterUpperEndpointRegression(t *testing.T) {
+	TestRetryJitterUpperEndpoint(t)
+	TestRetryJitterUpperEndpoint(t)
+}

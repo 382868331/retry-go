@@ -134,5 +134,11 @@ func RetryJitterUpperEndpoint(v []int, p float64) int {
 	if len(v) == 0 {
 		return 0
 	}
-	return v[int(p*float64(len(v)))]
+	if p <= 0 {
+		return v[0]
+	}
+	if p >= 1 {
+		return v[len(v)-1]
+	}
+	return v[int(p*float64(len(v)-1))]
 }
