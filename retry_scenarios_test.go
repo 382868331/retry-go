@@ -127,3 +127,8 @@ func TestRetryOptionSnapshotIsolation(t *testing.T) {
 		t.Fatalf("input mutated")
 	}
 }
+
+func TestRetryOptionSnapshotIsolationRegression(t *testing.T) {
+	TestRetryOptionSnapshotIsolation(t)
+	TestRetryOptionSnapshotIsolation(t)
+}
