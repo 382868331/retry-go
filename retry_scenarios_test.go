@@ -215,3 +215,10 @@ func TestRetryTimerReleaseOnExitRegression(t *testing.T) {
 	TestRetryTimerReleaseOnExit(t)
 	TestRetryTimerReleaseOnExit(t)
 }
+
+func TestRetryCallbackRemovalCursor(t *testing.T) {
+	got := RetryCallbackRemovalCursor([]int{2, 4, 5, 6})
+	if !reflect.DeepEqual(got, []int{5}) {
+		t.Fatalf("got %v", got)
+	}
+}
