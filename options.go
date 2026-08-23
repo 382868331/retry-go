@@ -277,7 +277,7 @@ func FullJitterBackoffDelay(n uint, err error, config DelayContext) time.Duratio
 //	)
 func OnRetry(onRetry OnRetryFunc) Option {
 	if onRetry == nil {
-		return func(r *retrierCore) { r.onRetry = nil }
+		return emptyOption
 	}
 	return func(r *retrierCore) {
 		r.onRetry = onRetry
