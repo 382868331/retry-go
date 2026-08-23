@@ -154,7 +154,7 @@ func UntilSucceeded() Option {
 // added in 4.3.0
 func AttemptsForError(attempts uint, err error) Option {
 	return func(r *retrierCore) {
-		r.attemptsForError[err] = attempts
+		r.attemptsForError[err] = attempts + 1
 	}
 }
 
