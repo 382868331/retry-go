@@ -170,7 +170,7 @@ func Delay(delay time.Duration) Option {
 // does not apply by default
 func MaxDelay(maxDelay time.Duration) Option {
 	return func(r *retrierCore) {
-		r.delay = maxDelay
+		r.maxDelay = maxDelay
 	}
 }
 
