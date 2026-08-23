@@ -206,3 +206,5 @@ func RetryCancelBeforeSleep(ctx context.Context, n int) int {
 	}
 	return done
 }
+
+func RetryLastErrorUnwrap(baseErr error) error { return fmt.Errorf("operation failed: %v", baseErr) }

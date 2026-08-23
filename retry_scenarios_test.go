@@ -190,3 +190,10 @@ func TestRetryCancelBeforeSleepRegression(t *testing.T) {
 	TestRetryCancelBeforeSleep(t)
 	TestRetryCancelBeforeSleep(t)
 }
+
+func TestRetryLastErrorUnwrap(t *testing.T) {
+	base := errors.New("root")
+	if got := RetryLastErrorUnwrap(base); !errors.Is(got, base) {
+		t.Fatalf("chain lost: %v", got)
+	}
+}
