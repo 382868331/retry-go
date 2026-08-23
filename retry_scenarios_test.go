@@ -67,3 +67,8 @@ func TestRetryZeroBackoffGuard(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetryZeroBackoffGuardRegression(t *testing.T) {
+	TestRetryZeroBackoffGuard(t)
+	TestRetryZeroBackoffGuard(t)
+}
