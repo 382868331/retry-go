@@ -20,3 +20,8 @@ func TestRetryAttemptBudgetFence(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryAttemptBudgetFenceRegression(t *testing.T) {
+	TestRetryAttemptBudgetFence(t)
+	TestRetryAttemptBudgetFence(t)
+}
