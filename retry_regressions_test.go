@@ -245,3 +245,10 @@ func TestRetryRemoveDuringIterationRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryRemoveDuringIteration(t)
 }
+
+func TestRetryFirstValue(t *testing.T) {
+	v, ok := RetryFirstValue(nil)
+	if ok || v != 0 {
+		t.Fatalf("got %d %v", v, ok)
+	}
+}
