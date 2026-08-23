@@ -79,3 +79,8 @@ func TestRetryUnicodeOperationLabel(t *testing.T) {
 		t.Fatalf("got %q", got)
 	}
 }
+
+func TestRetryUnicodeOperationLabelRegression(t *testing.T) {
+	TestRetryUnicodeOperationLabel(t)
+	TestRetryUnicodeOperationLabel(t)
+}
