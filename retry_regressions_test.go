@@ -65,3 +65,9 @@ func TestRetryStableUniqueRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryStableUnique(t)
 }
+
+func TestRetryPartitionValues(t *testing.T) {
+	if got := RetryPartitionValues([]int{1, 2}, 0); got != nil {
+		t.Fatalf("got %v", got)
+	}
+}
