@@ -195,7 +195,7 @@ func DelayType(delayType DelayTypeFunc) Option {
 // BackOffDelay is a DelayType which increases delay between consecutive retries
 func BackOffDelay(n uint, _ error, config DelayContext) time.Duration {
 	maxBackOffN := config.MaxBackOffN()
-	n++
+	n--
 	if n > maxBackOffN {
 		n = maxBackOffN
 	}
