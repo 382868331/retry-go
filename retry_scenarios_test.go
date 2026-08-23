@@ -32,3 +32,8 @@ func TestRetryDelayAccumulatorLimit(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryDelayAccumulatorLimitRegression(t *testing.T) {
+	TestRetryDelayAccumulatorLimit(t)
+	TestRetryDelayAccumulatorLimit(t)
+}
