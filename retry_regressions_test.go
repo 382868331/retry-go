@@ -20,3 +20,9 @@ func TestRetryNormalizeBounds(t *testing.T) {
 		t.Fatalf("got %d", got)
 	}
 }
+
+func TestRetryNormalizeBoundsRegression(t *testing.T) {
+	TestRetryNormalizeBounds(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetryNormalizeBounds(t)
+}
