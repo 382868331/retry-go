@@ -96,3 +96,9 @@ func TestRetryRetryableFlagWhitespaceRegression(t *testing.T) {
 	TestRetryRetryableFlagWhitespace(t)
 	TestRetryRetryableFlagWhitespace(t)
 }
+
+func TestRetryExponentialShiftCap(t *testing.T) {
+	if got := RetryExponentialShiftCap(2, 100, 4); got != 32 {
+		t.Fatalf("got %d", got)
+	}
+}
