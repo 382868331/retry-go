@@ -239,3 +239,10 @@ func TestRetryResultErrorOrderingRegression(t *testing.T) {
 	TestRetryResultErrorOrdering(t)
 	TestRetryResultErrorOrdering(t)
 }
+
+func TestRetryMonotonicClockDiagnosis(t *testing.T) {
+	got := RetryMonotonicClockDiagnosis("a\r\nb\r\n")
+	if !reflect.DeepEqual(got, []string{"a", "b", ""}) {
+		t.Fatalf("got %q", got)
+	}
+}

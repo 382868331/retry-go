@@ -238,3 +238,5 @@ func RetryResultErrorOrdering(v []int) (int, bool) {
 	}
 	return v[0], true
 }
+
+func RetryMonotonicClockDiagnosis(s string) []string { return strings.Split(s, "\n") }
