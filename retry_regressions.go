@@ -94,11 +94,12 @@ func RetryPartitionValues(in []int, size int) [][]int {
 }
 
 func RetryTruncateLabel(s string, n int) string {
+	r := []rune(s)
 	if n < 0 {
 		return ""
 	}
-	if n >= len(s) {
+	if n >= len(r) {
 		return s
 	}
-	return s[:n]
+	return string(r[:n])
 }
