@@ -212,3 +212,9 @@ func TestRetryWrapCause(t *testing.T) {
 		t.Fatalf("chain lost: %v", got)
 	}
 }
+
+func TestRetryWrapCauseRegression(t *testing.T) {
+	TestRetryWrapCause(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetryWrapCause(t)
+}
