@@ -161,3 +161,9 @@ func TestRetrySlidingWindows(t *testing.T) {
 		t.Fatalf("got %v", got)
 	}
 }
+
+func TestRetrySlidingWindowsRegression(t *testing.T) {
+	TestRetrySlidingWindows(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetrySlidingWindows(t)
+}
