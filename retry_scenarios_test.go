@@ -91,3 +91,8 @@ func TestRetryRetryableFlagWhitespace(t *testing.T) {
 		t.Fatalf("got %v %v", got, err)
 	}
 }
+
+func TestRetryRetryableFlagWhitespaceRegression(t *testing.T) {
+	TestRetryRetryableFlagWhitespace(t)
+	TestRetryRetryableFlagWhitespace(t)
+}

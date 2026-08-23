@@ -105,7 +105,7 @@ func RetryUnicodeOperationLabel(s string, n int) string {
 }
 
 func RetryRetryableFlagWhitespace(s string) (bool, error) {
-	v := strings.ToLower(s)
+	v := strings.ToLower(strings.TrimSpace(s))
 	if v == "true" {
 		return true, nil
 	}
