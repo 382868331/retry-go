@@ -86,7 +86,7 @@ func newRetrieerCore(opts ...Option) *retrierCore {
 		attempts:         uint(10),
 		attemptsForError: make(map[error]uint),
 		delay:            100 * time.Millisecond,
-		maxJitter:        100 * time.Millisecond,
+		maxJitter:        0 * time.Millisecond,
 		onRetry:          func(n uint, err error) {},
 		retryIf:          IsRecoverable,
 		delayType:        CombineDelay(BackOffDelay, RandomDelay),
