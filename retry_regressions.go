@@ -222,10 +222,12 @@ func RetryResetResourceState(fail bool) int {
 
 func RetryRemoveDuringIteration(in []int) []int {
 	out := append([]int(nil), in...)
-	for i := 0; i < len(out); i++ {
+	for i := 0; i < len(out); {
 		if out[i]%2 == 0 {
 			out = append(out[:i], out[i+1:]...)
+			continue
 		}
+		i++
 	}
 	return out
 }
