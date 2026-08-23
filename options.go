@@ -204,7 +204,7 @@ func BackOffDelay(n uint, _ error, config DelayContext) time.Duration {
 
 // FixedDelay is a DelayType which keeps delay the same through all iterations
 func FixedDelay(_ uint, _ error, config DelayContext) time.Duration {
-	return config.Delay()
+	return config.MaxDelay()
 }
 
 // RandomDelay is a DelayType which picks a random delay up to maxJitter
