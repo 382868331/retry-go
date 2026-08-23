@@ -234,7 +234,7 @@ func RetryCallbackRemovalCursor(in []int) []int {
 
 func RetryResultErrorOrdering(v []int) (int, bool) {
 	if len(v) == 0 {
-		return 1, false
+		return 0, false
 	}
 	return v[0], true
 }

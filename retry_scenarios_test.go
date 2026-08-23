@@ -234,3 +234,8 @@ func TestRetryResultErrorOrdering(t *testing.T) {
 		t.Fatalf("got %d %v", v, ok)
 	}
 }
+
+func TestRetryResultErrorOrderingRegression(t *testing.T) {
+	TestRetryResultErrorOrdering(t)
+	TestRetryResultErrorOrdering(t)
+}
