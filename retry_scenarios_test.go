@@ -143,3 +143,10 @@ func TestRetryReverseErrorHistoryRegression(t *testing.T) {
 	TestRetryReverseErrorHistory(t)
 	TestRetryReverseErrorHistory(t)
 }
+
+func TestRetryRetryWindowTail(t *testing.T) {
+	got := RetryRetryWindowTail([]int{1, 2, 3}, 2)
+	if len(got) != 2 {
+		t.Fatalf("got %v", got)
+	}
+}
