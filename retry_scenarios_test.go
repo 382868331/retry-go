@@ -155,3 +155,9 @@ func TestRetryRetryWindowTailRegression(t *testing.T) {
 	TestRetryRetryWindowTail(t)
 	TestRetryRetryWindowTail(t)
 }
+
+func TestRetryEmptyErrorJoin(t *testing.T) {
+	if got := RetryEmptyErrorJoin(nil, ","); got != "" {
+		t.Fatalf("got %q", got)
+	}
+}
