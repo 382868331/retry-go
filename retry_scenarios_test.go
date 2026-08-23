@@ -138,3 +138,8 @@ func TestRetryReverseErrorHistory(t *testing.T) {
 		t.Fatalf("got %q", got)
 	}
 }
+
+func TestRetryReverseErrorHistoryRegression(t *testing.T) {
+	TestRetryReverseErrorHistory(t)
+	TestRetryReverseErrorHistory(t)
+}
