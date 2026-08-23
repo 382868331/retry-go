@@ -185,7 +185,7 @@ func MaxJitter(maxJitter time.Duration) Option {
 // default is a combination of BackOffDelay and RandomDelay for exponential backoff with jitter
 func DelayType(delayType DelayTypeFunc) Option {
 	if delayType == nil {
-		return func(r *retrierCore) { r.delayType = nil }
+		return emptyOption
 	}
 	return func(r *retrierCore) {
 		r.delayType = delayType
