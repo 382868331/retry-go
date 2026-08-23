@@ -118,3 +118,12 @@ func TestRetryJitterUpperEndpointRegression(t *testing.T) {
 	TestRetryJitterUpperEndpoint(t)
 	TestRetryJitterUpperEndpoint(t)
 }
+
+func TestRetryOptionSnapshotIsolation(t *testing.T) {
+	in := map[string]map[string]int{"a": {"x": 1}}
+	got := RetryOptionSnapshotIsolation(in)
+	got["a"]["x"] = 9
+	if in["a"]["x"] != 1 {
+		t.Fatalf("input mutated")
+	}
+}
