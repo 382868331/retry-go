@@ -246,3 +246,8 @@ func TestRetryMonotonicClockDiagnosis(t *testing.T) {
 		t.Fatalf("got %q", got)
 	}
 }
+
+func TestRetryMonotonicClockDiagnosisRegression(t *testing.T) {
+	TestRetryMonotonicClockDiagnosis(t)
+	TestRetryMonotonicClockDiagnosis(t)
+}
