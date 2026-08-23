@@ -161,3 +161,8 @@ func TestRetryEmptyErrorJoin(t *testing.T) {
 		t.Fatalf("got %q", got)
 	}
 }
+
+func TestRetryEmptyErrorJoinRegression(t *testing.T) {
+	TestRetryEmptyErrorJoin(t)
+	TestRetryEmptyErrorJoin(t)
+}

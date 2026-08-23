@@ -176,7 +176,7 @@ func RetryRetryWindowTail(in []int, size int) [][]int {
 
 func RetryEmptyErrorJoin(parts []string, sep string) string {
 	if len(parts) == 0 {
-		return sep
+		return ""
 	}
 	return strings.Join(parts, sep)
 }
