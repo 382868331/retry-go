@@ -84,3 +84,10 @@ func TestRetryUnicodeOperationLabelRegression(t *testing.T) {
 	TestRetryUnicodeOperationLabel(t)
 	TestRetryUnicodeOperationLabel(t)
 }
+
+func TestRetryRetryableFlagWhitespace(t *testing.T) {
+	got, err := RetryRetryableFlagWhitespace(" TRUE ")
+	if err != nil || !got {
+		t.Fatalf("got %v %v", got, err)
+	}
+}
