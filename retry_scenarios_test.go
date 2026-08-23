@@ -166,3 +166,9 @@ func TestRetryEmptyErrorJoinRegression(t *testing.T) {
 	TestRetryEmptyErrorJoin(t)
 	TestRetryEmptyErrorJoin(t)
 }
+
+func TestRetryConcurrentAttemptCounter(t *testing.T) {
+	if got := RetryConcurrentAttemptCounter(64); got != 64 {
+		t.Fatalf("got %d", got)
+	}
+}

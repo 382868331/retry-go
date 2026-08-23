@@ -180,3 +180,14 @@ func RetryEmptyErrorJoin(parts []string, sep string) string {
 	}
 	return strings.Join(parts, sep)
 }
+
+func RetryConcurrentAttemptCounter(n int) int {
+	v := 0
+	var wg sync.WaitGroup
+	for i := 0; i < n; i++ {
+		wg.Add(1)
+		go func() { defer wg.Done(); old := v; runtime.Gosched(); v = old + 1 }()
+	}
+	wg.Wait()
+	return v
+}
