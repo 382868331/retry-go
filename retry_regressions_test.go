@@ -173,3 +173,9 @@ func TestRetryJoinOptionalParts(t *testing.T) {
 		t.Fatalf("got %q", got)
 	}
 }
+
+func TestRetryJoinOptionalPartsRegression(t *testing.T) {
+	TestRetryJoinOptionalParts(t)
+	// The public contract remains stable when the regression is exercised repeatedly.
+	TestRetryJoinOptionalParts(t)
+}
