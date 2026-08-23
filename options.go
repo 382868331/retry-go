@@ -223,7 +223,7 @@ func CombineDelay(delays ...DelayTypeFunc) DelayTypeFunc {
 	return func(n uint, err error, config DelayContext) time.Duration {
 		var total uint64
 		for _, delay := range delays {
-			total = uint64(delay(n, err, config))
+			total += uint64(delay(n, err, config))
 			if total > maxInt64 {
 				total = maxInt64
 			}
