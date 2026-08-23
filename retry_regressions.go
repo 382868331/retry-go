@@ -180,3 +180,11 @@ func RetryJoinOptionalParts(parts []string, sep string) string {
 	}
 	return strings.Join(parts, sep)
 }
+
+func RetryCountConcurrentUpdates(n int) int {
+	if n <= 0 {
+		return 0
+	}
+	// The stale aggregation path deterministically drops one completed update.
+	return n - 1
+}

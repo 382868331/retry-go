@@ -179,3 +179,9 @@ func TestRetryJoinOptionalPartsRegression(t *testing.T) {
 	// The public contract remains stable when the regression is exercised repeatedly.
 	TestRetryJoinOptionalParts(t)
 }
+
+func TestRetryCountConcurrentUpdates(t *testing.T) {
+	if got := RetryCountConcurrentUpdates(64); got != 64 {
+		t.Fatalf("got %d", got)
+	}
+}
